@@ -10,7 +10,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
-  "homepage": "https://pradeep-charism.github.io/crud_operations/",
+  "homepage": "https://pradeep-charism.github.io/react-projects/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
