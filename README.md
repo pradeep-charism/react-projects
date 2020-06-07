@@ -15,9 +15,9 @@ npm
 
 npm install -g create-react-app	Create new react app
  
-npx create-react-app first-app
+_npx create-react-app first-app_
 
-create-react-app --help	Help
+_create-react-app --help	Help_
 
 npm start	Start the application. # Start local server
 
@@ -25,6 +25,40 @@ npm test	  Starts the test runner.
 
 #### compile all the React code and place it in the root of a directory somewhere, all you need to do is run the following line. Bundles the app into static files for production. This will create a build folder which will contain your app. Put the contents of that folder anywhere, and you're done!
 npm run build	
+
+----
+
+### Hosting on github
+Make sure you've exited out of your local React environment, so the code isn't currently running. First, we're going to add a homepage field to package.json, that has the URL we want our app to live on.
+package.json
+
+"homepage": "https://pradeep-charism.github.io/react-projects/",
+
+We'll also add these two lines to the scripts property.
+
+"scripts": {
+  // ...
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+}
+
+In your project, you'll add **gh-pages** to the devDependencies.
+
+_npm install --save-dev gh-pages_
+
+We'll create the build, which will have all the compiled, static files.
+
+_npm run build_
+
+Finally, we'll deploy to gh-pages.
+
+_npm run deploy_
+
+And we're done! The app is now available live at https://pradeep-charism.github.io/react-projects/.
+
+----
+
+
 
 npm start	Starts the development server.
 
