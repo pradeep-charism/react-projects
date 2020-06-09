@@ -56,10 +56,10 @@ class CourseComponent extends Component {
 
         if (this.state.id === -1) {
             CourseDataService.createCourse(username, course)
-                .then(() => this.props.history.push('/courses'))
+                .then(() => this.props.history.push('/stocks'))
         } else {
             CourseDataService.updateCourse(username, this.state.id, course)
-                .then(() => this.props.history.push('/courses'))
+                .then(() => this.props.history.push('/stocks'))
         }
 
         console.log(values);

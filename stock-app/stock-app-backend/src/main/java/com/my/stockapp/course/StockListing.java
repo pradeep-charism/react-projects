@@ -23,17 +23,17 @@ public class StockListing {
 	@Autowired
 	private StockRepository courseManagementService;
 
-	@GetMapping("/instructors/{username}/courses")
+	@GetMapping("/depository/{username}/stocks")
 	public List<Stock> getAllCourses(@PathVariable String username) {
 		return courseManagementService.findAll();
 	}
 
-	@GetMapping("/instructors/{username}/courses/{id}")
+	@GetMapping("/depository/{username}/stocks/{id}")
 	public Stock getCourse(@PathVariable String username, @PathVariable long id) {
 		return courseManagementService.findById(id);
 	}
 
-	@DeleteMapping("/instructors/{username}/courses/{id}")
+	@DeleteMapping("/depository/{username}/stocks/{id}")
 	public ResponseEntity<Void> deleteCourse(@PathVariable String username, @PathVariable long id) {
 
 		Stock stock = courseManagementService.deleteById(id);
@@ -45,7 +45,7 @@ public class StockListing {
 		return ResponseEntity.notFound().build();
 	}
 
-	@PutMapping("/instructors/{username}/courses/{id}")
+	@PutMapping("/depository/{username}/stocks/{id}")
 	public ResponseEntity<Stock> updateCourse(@PathVariable String username, @PathVariable long id,
 											  @RequestBody Stock stock) {
 
@@ -54,7 +54,7 @@ public class StockListing {
 		return new ResponseEntity<Stock>(stock, HttpStatus.OK);
 	}
 
-	@PostMapping("/instructors/{username}/courses")
+	@PostMapping("/depository/{username}/stocks")
 	public ResponseEntity<Void> createCourse(@PathVariable String username, @RequestBody Stock stock) {
 
 		Stock createdStock = courseManagementService.save(stock);
