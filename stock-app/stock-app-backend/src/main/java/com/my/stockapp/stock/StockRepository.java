@@ -14,10 +14,10 @@ public class StockRepository {
 	private static final String INVESTOR = "sg-investor";
 
 	static {
-		stocks.add(new Stock(1001, INVESTOR, "Singtel."));
-		stocks.add(new Stock(1002, INVESTOR, "City Developments."));
-		stocks.add(new Stock(1003, INVESTOR, "SBS Transit."));
-		stocks.add(new Stock(1004, INVESTOR, "SATS Ltd."));
+		stocks.add(new Stock(1, INVESTOR, "Singtel."));
+		stocks.add(new Stock(2, INVESTOR, "City Developments."));
+		stocks.add(new Stock(3, INVESTOR, "SBS Transit."));
+		stocks.add(new Stock(4, INVESTOR, "SATS Ltd."));
 	}
 
 	public List<Stock> findAll() {
