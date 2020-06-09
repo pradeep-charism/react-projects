@@ -32,8 +32,18 @@ public class StockRepository {
 	}
 
 	public List<Stock> findAll() {
-		return stocks;
+		return jdbcTemplate.query(
+				"select * from portfolio",
+				(rs, rowNum) ->
+						new Stock(
+								rs.getLong("id"),
+								rs.getString("holder"),
+								rs.getString("stock_name")
+						)
+		);
 	}
+
+
 
 	public Stock save(Stock stock) {
 		if (stock.getId() == -1 || stock.getId() == 0) {

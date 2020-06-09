@@ -1,25 +1,17 @@
 ##Mysql database commands
 CREATE DATABASE react_boot;
-
 USE react_boot;
-
-drop table employees;
-
-CREATE TABLE `employees` (
+drop table portfolio;
+CREATE TABLE `portfolio` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(255) DEFAULT NULL,
-    `gender` VARCHAR(255) DEFAULT NULL,
-    `department` VARCHAR(255) DEFAULT NULL,
-    `dob` DATE DEFAULT NULL,
+    `holder` VARCHAR(255) DEFAULT NULL,
+    `stock_name` VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (`id`)
 );
-
-insert into `employees` (`id`, `name`, `gender`, `department`, `dob`) values('1001','Alphabet','Male','React JS','1998-04-02');
-
-insert into `employees` (`id`, `name`, `gender`, `department`, `dob`) values('1002','Brazil','Female','Spring Boot','2000-01-01');
-
-select * from employees;
-
+truncate table portfolio;
+insert into `portfolio` (`id`, `holder`, `stock_name`) values('1','sg-investor','Singtel');
+insert into `portfolio` (`id`, `holder`, `stock_name`) values('2','sg-investor','City Developments Ltd.');
+select * from portfolio;
 commit;
 
 -----
