@@ -3,15 +3,26 @@ package com.my.stockapp.stock;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-@Service
+@Repository
 public class StockRepository {
 
 	private static List<Stock> stocks = new ArrayList<>();
 	private static long idCounter = 0;
 
 	private static final String INVESTOR = "sg-investor";
+
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+
+	@Autowired
+	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
 
 	static {
 		stocks.add(new Stock(1, INVESTOR, "Singtel."));
