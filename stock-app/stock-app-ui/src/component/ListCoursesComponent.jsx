@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CourseDataService from '../service/CourseDataService';
 
-const INSTRUCTOR = 'in28minutes'
+const INVESTOR = 'sg-investor'
 
 class ListCoursesComponent extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class ListCoursesComponent extends Component {
     }
 
     refreshCourses() {
-        CourseDataService.retrieveAllCourses(INSTRUCTOR)//HARDCODED
+        CourseDataService.retrieveAllCourses(INVESTOR)//HARDCODED
             .then(
                 response => {
                     //console.log(response);
@@ -31,7 +31,7 @@ class ListCoursesComponent extends Component {
     }
 
     deleteCourseClicked(id) {
-        CourseDataService.deleteCourse(INSTRUCTOR, id)
+        CourseDataService.deleteCourse(INVESTOR, id)
             .then(
                 response => {
                     this.setState({ message: `Delete of course ${id} Successful` })
