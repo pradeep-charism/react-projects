@@ -24,13 +24,6 @@ public class StockRepository {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-//	static {
-//		stocks.add(new Stock(1, INVESTOR, "Singtel."));
-//		stocks.add(new Stock(2, INVESTOR, "City Developments."));
-//		stocks.add(new Stock(3, INVESTOR, "SBS Transit."));
-//		stocks.add(new Stock(4, INVESTOR, "SATS Ltd."));
-//	}
-
     public List<Stock> findAll() {
         stocks = jdbcTemplate.query(
                 "select * from portfolio",
@@ -47,8 +40,7 @@ public class StockRepository {
 
     public Stock save(Stock stock) {
         int isUpdated = jdbcTemplate.update(
-                "insert into portfolio (id, holder, stock_name) values(?, ?, ?)",
-                ++idCounter, INVESTOR, stock.getDescription());
+                "insert into portfolio (id, holder, stock_name) values(?, ?, ?)", ++idCounter, INVESTOR, stock.getStockName());
 
         return stock;
     }
@@ -70,5 +62,12 @@ public class StockRepository {
                                 rs.getString("stock_name")
                         )
         );
+    }
+
+    private static void getDefaultStocks() {
+        stocks.add(new Stock(1, INVESTOR, "Singtel."));
+        stocks.add(new Stock(2, INVESTOR, "City Developments."));
+        stocks.add(new Stock(3, INVESTOR, "SBS Transit."));
+        stocks.add(new Stock(4, INVESTOR, "SATS Ltd."));
     }
 }

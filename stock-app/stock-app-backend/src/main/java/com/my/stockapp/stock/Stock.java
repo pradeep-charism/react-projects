@@ -2,18 +2,18 @@ package com.my.stockapp.stock;
 
 public class Stock {
 	private Long id;
-	private String username;
-	private String description;
+	private String holder;
+	private String stockName;
 
 	public Stock() {
 
 	}
 
-	public Stock(long id, String username, String description) {
+	public Stock(long id, String holder, String stockName) {
 		super();
 		this.id = id;
-		this.username = username;
-		this.description = description;
+		this.holder = holder;
+		this.stockName = stockName;
 	}
 
 	public Long getId() {
@@ -24,29 +24,29 @@ public class Stock {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getHolder() {
+		return holder;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setHolder(String holder) {
+		this.holder = holder;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getStockName() {
+		return stockName;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setStockName(String stockName) {
+		this.stockName = stockName;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((stockName == null) ? 0 : stockName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result + ((holder == null) ? 0 : holder.hashCode());
 		return result;
 	}
 
@@ -59,20 +59,20 @@ public class Stock {
 		if (getClass() != obj.getClass())
 			return false;
 		Stock other = (Stock) obj;
-		if (description == null) {
-			if (other.description != null)
+		if (stockName == null) {
+			if (other.stockName != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} else if (!stockName.equals(other.stockName))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (username == null) {
-			if (other.username != null)
+		if (holder == null) {
+			if (other.holder != null)
 				return false;
-		} else if (!username.equals(other.username))
+		} else if (!holder.equals(other.holder))
 			return false;
 		return true;
 	}

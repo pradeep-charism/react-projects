@@ -61,7 +61,7 @@ class ListStocksComponent extends Component {
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Description</th>
+                                <th>stockName</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -72,7 +72,7 @@ class ListStocksComponent extends Component {
                                     Stock =>
                                         <tr key={Stock.id}>
                                             <td>{Stock.id}</td>
-                                            <td>{Stock.description}</td>
+                                            <td>{Stock.stockName}</td>
                                             <td><button className="btn btn-success" onClick={() => this.updateStockClicked(Stock.id)}>Update</button></td>
                                             <td><button className="btn btn-warning" onClick={() => this.deleteStockClicked(Stock.id)}>Delete</button></td>
                                         </tr>

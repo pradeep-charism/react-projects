@@ -10,7 +10,7 @@ class StockComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            description: ''
+            stockName: ''
         }
 
         this.onSubmit = this.onSubmit.bind(this)
@@ -29,16 +29,16 @@ class StockComponent extends Component {
 
         StockDataService.retrieveStock(INVESTOR, this.state.id)
             .then(response => this.setState({
-                description: response.data.description
+                stockName: response.data.stockName
             }))
     }
 
     validate(values) {
         let errors = {}
-        if (!values.description) {
-            errors.description = 'Enter a Description'
-        } else if (values.description.length < 5) {
-            errors.description = 'Enter atleast 5 Characters in Description'
+        if (!values.stockName) {
+            errors.stockName = 'Enter a stockName'
+        } else if (values.stockName.length < 5) {
+            errors.stockName = 'Enter atleast 5 Characters in stockName'
         }
 
         return errors
@@ -46,19 +46,19 @@ class StockComponent extends Component {
     }
 
     onSubmit(values) {
-        let username = INVESTOR
+        let holder = INVESTOR
 
         let stock = {
             id: this.state.id,
-            description: values.description,
+            stockName: values.stockName,
             targetDate: values.targetDate
         }
 
         if (this.state.id === -1) {
-            StockDataService.createStock(username, stock)
+            StockDataService.createStock(holder, stock)
                 .then(() => this.props.history.push('/stocks'))
         } else {
-            StockDataService.updateStock(username, this.state.id, stock)
+            StockDataService.updateStock(holder, this.state.id, stock)
                 .then(() => this.props.history.push('/stocks'))
         }
 
@@ -67,14 +67,14 @@ class StockComponent extends Component {
 
     render() {
 
-        let { description, id } = this.state
+        let { stockName, id } = this.state
 
         return (
             <div>
                 <h3>Stock</h3>
                 <div className="container">
                     <Formik
-                        initialValues={{ id, description }}
+                        initialValues={{ id, stockName }}
                         onSubmit={this.onSubmit}
                         validateOnChange={false}
                         validateOnBlur={false}
@@ -84,15 +84,15 @@ class StockComponent extends Component {
                         {
                             (props) => (
                                 <Form>
-                                    <ErrorMessage name="description" component="div"
+                                    <ErrorMessage name="stockName" component="div"
                                         className="alert alert-warning" />
                                     <fieldset className="form-group">
                                         <label>Id</label>
                                         <Field className="form-control" type="text" name="id" disabled />
                                     </fieldset>
                                     <fieldset className="form-group">
-                                        <label>Description</label>
-                                        <Field className="form-control" type="text" name="description" />
+                                        <label>stockName</label>
+                                        <Field className="form-control" type="text" name="stockName" />
                                     </fieldset>
                                     <button className="btn btn-success" type="submit">Save</button>
                                 </Form>
