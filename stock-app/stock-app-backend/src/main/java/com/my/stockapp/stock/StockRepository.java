@@ -14,11 +14,10 @@ public class StockRepository {
 	private static final String INVESTOR = "sg-investor";
 
 	static {
-		stocks.add(new Stock(++idCounter, INVESTOR, "Learn Full stack with Spring Boot and Angular"));
-		stocks.add(new Stock(++idCounter, INVESTOR, "Learn Full stack with Spring Boot and React"));
-		stocks.add(new Stock(++idCounter, INVESTOR, "Master Microservices with Spring Boot and Spring Cloud"));
-		stocks.add(new Stock(++idCounter, INVESTOR,
-				"Deploy Spring Boot Microservices to Cloud with Docker and Kubernetes"));
+		stocks.add(new Stock(1001, INVESTOR, "Singtel."));
+		stocks.add(new Stock(1002, INVESTOR, "City Developments."));
+		stocks.add(new Stock(1003, INVESTOR, "SBS Transit."));
+		stocks.add(new Stock(1004, INVESTOR, "SATS Ltd."));
 	}
 
 	public List<Stock> findAll() {
