@@ -1,4 +1,4 @@
-package com.my.stockapp.course;
+package com.my.stockapp.stock;
 
 public class Stock {
 	private Long id;

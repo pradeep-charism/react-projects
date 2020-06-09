@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import CourseDataService from '../service/CourseDataService';
+import StockDataService from '../service/StockDataService';
 
 const INVESTOR = 'sg-investor'
 
-class CourseComponent extends Component {
+class StockComponent extends Component {
     constructor(props) {
         super(props)
 
@@ -27,7 +27,7 @@ class CourseComponent extends Component {
             return
         }
 
-        CourseDataService.retrieveCourse(INVESTOR, this.state.id)
+        StockDataService.retrieveStock(INVESTOR, this.state.id)
             .then(response => this.setState({
                 description: response.data.description
             }))
@@ -48,17 +48,17 @@ class CourseComponent extends Component {
     onSubmit(values) {
         let username = INVESTOR
 
-        let course = {
+        let stock = {
             id: this.state.id,
             description: values.description,
             targetDate: values.targetDate
         }
 
         if (this.state.id === -1) {
-            CourseDataService.createCourse(username, course)
+            StockDataService.createStock(username, stock)
                 .then(() => this.props.history.push('/stocks'))
         } else {
-            CourseDataService.updateCourse(username, this.state.id, course)
+            StockDataService.updateStock(username, this.state.id, stock)
                 .then(() => this.props.history.push('/stocks'))
         }
 
@@ -71,7 +71,7 @@ class CourseComponent extends Component {
 
         return (
             <div>
-                <h3>Course</h3>
+                <h3>Stock</h3>
                 <div className="container">
                     <Formik
                         initialValues={{ id, description }}
@@ -106,4 +106,4 @@ class CourseComponent extends Component {
     }
 }
 
-export default CourseComponent
+export default StockComponent

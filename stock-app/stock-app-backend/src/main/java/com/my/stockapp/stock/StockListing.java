@@ -1,4 +1,4 @@
-package com.my.stockapp.course;
+package com.my.stockapp.stock;
 
 import java.net.URI;
 import java.util.List;
@@ -21,22 +21,22 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class StockListing {
 
 	@Autowired
-	private StockRepository courseManagementService;
+	private StockRepository stockRepository;
 
 	@GetMapping("/depository/{username}/stocks")
-	public List<Stock> getAllCourses(@PathVariable String username) {
-		return courseManagementService.findAll();
+	public List<Stock> getAllStocks(@PathVariable String username) {
+		return stockRepository.findAll();
 	}
 
 	@GetMapping("/depository/{username}/stocks/{id}")
-	public Stock getCourse(@PathVariable String username, @PathVariable long id) {
-		return courseManagementService.findById(id);
+	public Stock getStock(@PathVariable String username, @PathVariable long id) {
+		return stockRepository.findById(id);
 	}
 
 	@DeleteMapping("/depository/{username}/stocks/{id}")
-	public ResponseEntity<Void> deleteCourse(@PathVariable String username, @PathVariable long id) {
+	public ResponseEntity<Void> deleteStock(@PathVariable String username, @PathVariable long id) {
 
-		Stock stock = courseManagementService.deleteById(id);
+		Stock stock = stockRepository.deleteById(id);
 
 		if (stock != null) {
 			return ResponseEntity.noContent().build();
@@ -46,18 +46,18 @@ public class StockListing {
 	}
 
 	@PutMapping("/depository/{username}/stocks/{id}")
-	public ResponseEntity<Stock> updateCourse(@PathVariable String username, @PathVariable long id,
+	public ResponseEntity<Stock> updateStock(@PathVariable String username, @PathVariable long id,
 											  @RequestBody Stock stock) {
 
-		Stock stockUpdated = courseManagementService.save(stock);
+		Stock stockUpdated = stockRepository.save(stock);
 
 		return new ResponseEntity<Stock>(stock, HttpStatus.OK);
 	}
 
 	@PostMapping("/depository/{username}/stocks")
-	public ResponseEntity<Void> createCourse(@PathVariable String username, @RequestBody Stock stock) {
+	public ResponseEntity<Void> createStock(@PathVariable String username, @RequestBody Stock stock) {
 
-		Stock createdStock = courseManagementService.save(stock);
+		Stock createdStock = stockRepository.save(stock);
 
 		// Location
 		// Get current resource url

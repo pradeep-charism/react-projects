@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListStocksComponent from './ListStocksComponent';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import CourseComponent from './CourseComponent';
+import StockComponent from './StockComponent';
 
 class InstructorApp extends Component {
     render() {
@@ -12,7 +12,7 @@ class InstructorApp extends Component {
                     <Switch>
                         <Route path="/" exact component={ListStocksComponent} />
                         <Route path="/stocks" exact component={ListStocksComponent} />
-                        <Route path="/stocks/:id" component={CourseComponent} />
+                        <Route path="/stocks/:id" component={StockComponent} />
                     </Switch>
                 </>
             </Router>

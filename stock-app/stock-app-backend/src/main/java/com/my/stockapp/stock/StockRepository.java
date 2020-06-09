@@ -1,4 +1,4 @@
-package com.my.stockapp.course;
+package com.my.stockapp.stock;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,35 +1,35 @@
 import axios from 'axios'
 
 const INVESTOR = 'sg-investor'
-const COURSE_API_URL = 'http://localhost:8080'
-const INVESTOR_API_URL = `${COURSE_API_URL}/depository/${INVESTOR}`
+const Stock_API_URL = 'http://localhost:8080'
+const INVESTOR_API_URL = `${Stock_API_URL}/depository/${INVESTOR}`
 
-class CourseDataService {
+class StockDataService {
 
-    retrieveAllCourses(name) {
+    retrieveAllStocks(name) {
         //console.log('executed service')
         return axios.get(`${INVESTOR_API_URL}/stocks`);
     }
 
-    retrieveCourse(name, id) {
+    retrieveStock(name, id) {
         //console.log('executed service')
         return axios.get(`${INVESTOR_API_URL}/stocks/${id}`);
     }
 
-    deleteCourse(name, id) {
+    deleteStock(name, id) {
         //console.log('executed service')
         return axios.delete(`${INVESTOR_API_URL}/stocks/${id}`);
     }
 
-    updateCourse(name, id, course) {
+    updateStock(name, id, stock) {
         //console.log('executed service')
-        return axios.put(`${INVESTOR_API_URL}/stocks/${id}`, course);
+        return axios.put(`${INVESTOR_API_URL}/stocks/${id}`, stock);
     }
 
-    createCourse(name, course) {
+    createStock(name, stock) {
         //console.log('executed service')
-        return axios.post(`${INVESTOR_API_URL}/stocks/`, course);
+        return axios.post(`${INVESTOR_API_URL}/stocks/`, stock);
     }
 }
 
-export default new CourseDataService()
+export default new StockDataService()
