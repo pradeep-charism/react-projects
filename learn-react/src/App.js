@@ -1,20 +1,29 @@
 import React, { useState } from 'react';
 import './App.css';
 
-function Button() {
-  const [counter, setCounter] = useState(0);
+function Button(props) {
   const [count, setCount] = useState(1000);
-  const handleClick = () => setCounter(counter + 1);
+  // const handleClick = () => setCounter(props.counter + 1);
   return (
-    <button onClick={handleClick}>
-      {counter}
-    </button>);
+    <button onClick={props.onClickFunction}>+1</button>);
+}
+
+function Display(props){
+  return (
+      <div>
+        {props.message}
+      </div>
+  );
 }
 
 function App() {
+  const [counter, setCounter] = useState(100);
+  const incrementFunction = () => setCounter(counter + 1);
+
   return (
     <div className="App">
-      <Button />
+      <Button onClickFunction={incrementFunction}/>
+      <Display message={counter}/>
     </div>
   );
 }
