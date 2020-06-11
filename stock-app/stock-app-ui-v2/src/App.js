@@ -29,12 +29,24 @@ class Form extends React.Component {
   state = { userName: '' };
   handleSubmit = async (event) => {
     event.preventDefault();
-    let jsonData = JSON.stringify({ userName: `${this.state.userName}` })
-    const resp = await axios.post(`http://localhost:8080/depository/github/data/${jsonData}`);
-    console.log(resp.data);
-    this.props.onSubmit(resp.data);
+    // let jsonData = JSON.stringify({ userName: `${this.state.userName}` })
+    // const resp = await axios.post("http://localhost:8080/depository/github/data", jsonData);
+
+
+    const resp = await axios.post('http://localhost:8080/depository/github/data', {
+      userName: `${this.state.userName}`
+    })
+    .then((response) => {
+      console.log(response.data);
+      this.props.onSubmit(response.data);
+    }, (error) => {
+      console.log(error);
+    });
+
     this.setState({ userName: '' });
   };
+
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>

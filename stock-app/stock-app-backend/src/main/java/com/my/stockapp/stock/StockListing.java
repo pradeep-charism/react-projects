@@ -37,10 +37,9 @@ public class StockListing {
 		return "data";
 	}
 
-	@CrossOrigin
 	@ResponseBody
-	@RequestMapping(value="/depository/github/data/{userName}",method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getData(@PathVariable String userName) {
+	@RequestMapping(value="/depository/github/data",method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getData(@RequestBody String userName) {
 		System.out.println("inside get data" + userName);
 		String data = "{\n" +
 				"  \"login\": \"pradeep-charism\",\n" +
