@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import Table from './Table';
+import TableComponent from './components/TableComponent';
 import './App.css';
 import NavBar from './components/NavBar';
+import MTable from './components/MTable';
+
 
 class Form extends React.Component {
   state = {
@@ -23,9 +25,10 @@ class Form extends React.Component {
         console.log(error);
       });
 
+  //FIXME:  Reset form fields here
     this.setState({
-      country: '',
-      stockName: ''
+      // country: '',
+      // stockName: ''
     });
 
   };
@@ -82,8 +85,9 @@ class App extends React.Component {
         <div className="header">{this.props.title}</div>
         <Form onSubmit={this.addSearchResult} />
         <div>
-          <Table joinList={this.state.searchResults} />
+          <TableComponent joinList={this.state.searchResults} />
         </div>
+        {/* <MTable joinList={this.state.searchResults} /> */}
       </div>
     );
   }
