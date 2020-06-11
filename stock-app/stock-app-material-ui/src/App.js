@@ -15,8 +15,10 @@ class Form extends React.Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     await axios.post('http://localhost:8080/depository/github/data', {
-      country: `${this.state.country}`,
-      stockName: `${this.state.stockName}`
+      country: `USA`,
+      stockName: `Amazon`
+      // country: `${this.state.country}`,
+      // stockName: `${this.state.stockName}`
     })
       .then((response) => {
         console.log(response.data);
@@ -48,14 +50,14 @@ class Form extends React.Component {
               value={this.state.country}
               onChange={event => this.setState({ country: event.target.value })}
               placeholder="Stock Country"
-              required
+              // required
             /></td>
             <td><input
               type="text"
               value={this.state.stockName}
               onChange={event => this.setState({ stockName: event.target.value })}
               placeholder="Stock Name"
-              required
+              // required
             /></td>
             <td><button className="btn btn-success">Search</button></td>
           </tr>

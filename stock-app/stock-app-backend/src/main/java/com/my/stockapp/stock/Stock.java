@@ -1,9 +1,16 @@
 package com.my.stockapp.stock;
 
+import org.apache.commons.io.FileUtils;
+import org.springframework.core.io.ClassPathResource;
+
+import java.io.File;
+import java.io.IOException;
+
 public class Stock {
 	private Long id;
 	private String country;
 	private String stockName;
+	private String description;
 
 	public Stock() {
 	}
@@ -13,10 +20,11 @@ public class Stock {
 		this.stockName = stockName;
 	}
 
-	public Stock(long id, String country, String stockName) {
+	public Stock(Long id, String country, String stockName, String description) {
 		this.id = id;
 		this.country = country;
 		this.stockName = stockName;
+		this.description = description;
 	}
 
 	public Long getId() {
@@ -53,12 +61,27 @@ public class Stock {
 		return result;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	private static final String getStaticDescription(){
+		try {
+			File file = new ClassPathResource("xml.txt").getFile();
+			return FileUtils.readFileToString(file);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	@Override
 	public String toString() {
 		return "Stock{" +
 				"id=" + id +
-				", holder='" + country + '\'' +
+				", country='" + country + '\'' +
 				", stockName='" + stockName + '\'' +
+				", description='" + description + '\'' +
 				'}';
 	}
 
