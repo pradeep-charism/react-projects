@@ -123,3 +123,5 @@ npm install contentful
 
 npm start
 
+##### Material icons
+npm install @material-ui/icons
