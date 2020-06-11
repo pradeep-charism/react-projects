@@ -11,7 +11,7 @@ class Form extends React.Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const resp = await axios.post('http://localhost:8080/depository/github/data', {
+    await axios.post('http://localhost:8080/depository/github/data', {
       country: `${this.state.country}`,
       stockName: `${this.state.stockName}`
     })
@@ -37,7 +37,8 @@ class Form extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <table>
-          <tr>
+          <tbody>
+            <tr>
             <td><input
               type="text"
               value={this.state.country}
@@ -54,6 +55,8 @@ class Form extends React.Component {
             /></td>
             <td><button className="btn btn-success">Search</button></td>
           </tr>
+          </tbody>
+          
         </table>
       </form >
     );
