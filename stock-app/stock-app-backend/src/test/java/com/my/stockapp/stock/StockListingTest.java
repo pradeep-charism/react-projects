@@ -26,6 +26,7 @@ public class StockListingTest {
         list.add(new Stock(1, "c", "c"));
 
         String output = objectMapper.writeValueAsString(list);
+        System.out.println(output);
         String expected = "[{\"id\":1,\"country\":\"a\",\"stockName\":\"a\"},{\"id\":1,\"country\":\"b\",\"stockName\":\"b\"},{\"id\":1,\"country\":\"c\",\"stockName\":\"c\"}]";
         assertEquals(expected, output);
     }

@@ -45,7 +45,7 @@ class Form extends React.Component {
   };
   handleSubmit = async (event) => {
     event.preventDefault();
-    const resp = await axios.post('http://localhost:8080/depository/github/data01', {
+    const resp = await axios.post('http://localhost:8080/depository/github/data', {
       country: `USA`,
       stockName: `${this.state.stockName}`
     })
@@ -76,6 +76,48 @@ class Form extends React.Component {
   }
 }
 
+
+
+const TableHeader = () => {
+  return (
+    <thead>
+      <th>Id</th>
+      <th>Country</th>
+      <th>Stock Name</th>
+    </thead>
+  )
+}
+
+
+const TableBody = props => {
+  return (<tbody>
+    {
+      props.joinList.map((nestedItem, i) => (
+            nestedItem.map(data => (
+            <tr key={data.id}>
+              <td>{data.id}</td>
+              <td>{data.country}</td>
+              <td>{data.stockName}</td>
+            </tr>
+          ))
+      ))}
+  </tbody>);
+}
+
+class Table extends React.Component {
+  render() {
+    const { joinList } = this.props
+
+    return (
+      <table className="table">
+        <TableHeader />
+        <TableBody joinList={joinList} />
+      </table>
+    )
+  }
+}
+
+
 class App extends React.Component {
   state = {
     searchResults: [],
@@ -86,12 +128,22 @@ class App extends React.Component {
     }));
   };
 
+
   render() {
+    const users = [
+      { "id": 1, "country": "a", "stockName": "a" }, { "id": 1, "country": "b", "stockName": "b" }, { "id": 1, "country": "c", "stockName": "c" }
+    ];
+
+    const joinList = [users, users];
+
     return (
-      <div>
+      <div className="container">
         <div className="header">{this.props.title}</div>
         <Form onSubmit={this.addSearchResult} />
-        <CardList searchResults={this.state.searchResults} />
+        <div>
+          <Table joinList={this.state.searchResults} />
+        </div>
+        {/* <CardList searchResults={this.state.searchResults} /> */}
       </div>
     );
   }
