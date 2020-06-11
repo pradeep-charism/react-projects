@@ -50,16 +50,16 @@ public class StockListing {
 
     @ResponseBody
     @RequestMapping(value = "/depository/github/data", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getData(@RequestBody String inputString) {
+    public List<Stock> getData(@RequestBody String inputString) {
         LOG.info("Request Body: {}", inputString);
         try {
             Stock inputStock = objectMapper.readValue(inputString, Stock.class);
-            Stock stock = stockRepository.findByCountryAndStockName(inputStock);
-            String jsonObject = objectMapper.writeValueAsString(stock);
+            List<Stock> stocks = stockRepository.findByCountryAndStockName(inputStock);
+            String jsonObject = objectMapper.writeValueAsString(stocks);
             LOG.info("Returning Json Object: {}", jsonObject);
-            return jsonObject;
+            return stocks;
         } catch (Exception e) {
-            return "Exception or Failed to convert to json object";
+            throw new RuntimeException("Exception occurred while fetching data from server");
         }
     }
 

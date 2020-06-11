@@ -67,19 +67,16 @@ public class StockRepository {
         );
     }
 
-    public Stock findByCountryAndStockName(Stock inputObject) {
-        Stock stock = jdbcTemplate.queryForObject(
-                "select * from portfolio where country = ? and stock_name = ?",
-                new Object[]{inputObject.getCountry(), inputObject.getStockName()},
-                (rs, rowNum) ->
-                        new Stock(
-                                rs.getLong("id"),
-                                rs.getString("country"),
-                                rs.getString("stock_name")
-                        )
-        );
-        LOG.info("findByCountryAndStockName retrieved stock : {}", stock);
-        return stock;
+    public List<Stock> findByCountryAndStockName(Stock inputObject) {
+        String sql = "select * from portfolio where country = ? and stock_name = ?";
+        List<Stock> results = jdbcTemplate.query(sql, new Object[]{inputObject.getCountry(), inputObject.getStockName()}, (rs, i) -> new Stock(
+                rs.getLong("id"),
+                rs.getString("country"),
+                rs.getString("stock_name")
+        ));
+
+        LOG.info("findByCountryAndStockName retrieved stock : {}", results);
+        return results;
     }
 
     public Stock findByStockName(String stockName) {
