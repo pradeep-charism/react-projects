@@ -1,5 +1,7 @@
 package com.my.stockapp.stock;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -13,6 +15,7 @@ import java.util.List;
 @Repository
 public class StockRepository {
 
+    private static final Logger LOG = LoggerFactory.getLogger(StockRepository.class);
     private static List<Stock> stocks = new ArrayList<>();
     private static long idCounter = 0;
 
@@ -62,6 +65,36 @@ public class StockRepository {
                                 rs.getString("stock_name")
                         )
         );
+    }
+
+    public Stock findByCountryAndStockName(Stock inputObject) {
+        Stock stock = jdbcTemplate.queryForObject(
+                "select * from portfolio where country = ? and stock_name = ?",
+                new Object[]{inputObject.getCountry(), inputObject.getStockName()},
+                (rs, rowNum) ->
+                        new Stock(
+                                rs.getLong("id"),
+                                rs.getString("country"),
+                                rs.getString("stock_name")
+                        )
+        );
+        LOG.info("findByCountryAndStockName retrieved stock : {}", stock);
+        return stock;
+    }
+
+    public Stock findByStockName(String stockName) {
+        Stock stock = jdbcTemplate.queryForObject(
+                "select * from portfolio where stock_name = ?",
+                new Object[]{stockName},
+                (rs, rowNum) ->
+                        new Stock(
+                                rs.getLong("id"),
+                                rs.getString("holder"),
+                                rs.getString("stock_name")
+                        )
+        );
+        LOG.info("Retrieved stock: {}", stock);
+        return stock;
     }
 
     private static void getDefaultStocks() {

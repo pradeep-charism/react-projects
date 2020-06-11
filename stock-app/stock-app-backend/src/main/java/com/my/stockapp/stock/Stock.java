@@ -2,17 +2,20 @@ package com.my.stockapp.stock;
 
 public class Stock {
 	private Long id;
-	private String holder;
+	private String country;
 	private String stockName;
 
 	public Stock() {
-
 	}
 
-	public Stock(long id, String holder, String stockName) {
-		super();
+	public Stock(String country, String stockName) {
+		this.country = country;
+		this.stockName = stockName;
+	}
+
+	public Stock(long id, String country, String stockName) {
 		this.id = id;
-		this.holder = holder;
+		this.country = country;
 		this.stockName = stockName;
 	}
 
@@ -24,12 +27,12 @@ public class Stock {
 		this.id = id;
 	}
 
-	public String getHolder() {
-		return holder;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setHolder(String holder) {
-		this.holder = holder;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public String getStockName() {
@@ -46,8 +49,17 @@ public class Stock {
 		int result = 1;
 		result = prime * result + ((stockName == null) ? 0 : stockName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((holder == null) ? 0 : holder.hashCode());
+		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Stock{" +
+				"id=" + id +
+				", holder='" + country + '\'' +
+				", stockName='" + stockName + '\'' +
+				'}';
 	}
 
 	@Override
@@ -69,10 +81,10 @@ public class Stock {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (holder == null) {
-			if (other.holder != null)
+		if (country == null) {
+			if (other.country != null)
 				return false;
-		} else if (!holder.equals(other.holder))
+		} else if (!country.equals(other.country))
 			return false;
 		return true;
 	}

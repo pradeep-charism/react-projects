@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
-// GitHub usernames: gaearon, sophiebits, sebmarkbage, bvaughn
+// GitHub stockNames: gaearon, sophiebits, sebmarkbage, bvaughn
 
 const CardList = (props) => (
   <div>
@@ -14,11 +14,25 @@ class Card extends React.Component {
   render() {
     const profile = this.props;
     return (
-      <div className="github-profile">
-        <img className="img" src={profile.avatar_url} />
-        <div className="info">
-          <div className="name">{profile.name}</div>
-          <div className="company">{profile.company}</div>
+      <div>
+        <div>
+
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Holder</th>
+                <th>Stock Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr key={profile.id}>
+                <td>{profile.id}</td>
+                <td>{profile.holder}</td>
+                <td>{profile.stockName}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     );
@@ -26,24 +40,24 @@ class Card extends React.Component {
 }
 
 class Form extends React.Component {
-  state = { userName: '' };
+  state = {
+    country: '',
+    stockName: ''
+  };
   handleSubmit = async (event) => {
     event.preventDefault();
-    // let jsonData = JSON.stringify({ userName: `${this.state.userName}` })
-    // const resp = await axios.post("http://localhost:8080/depository/github/data", jsonData);
-
-
     const resp = await axios.post('http://localhost:8080/depository/github/data', {
-      userName: `${this.state.userName}`
+      country: `USA`,
+      stockName: `${this.state.stockName}`
     })
-    .then((response) => {
-      console.log(response.data);
-      this.props.onSubmit(response.data);
-    }, (error) => {
-      console.log(error);
-    });
+      .then((response) => {
+        console.log(response.data);
+        this.props.onSubmit(response.data);
+      }, (error) => {
+        console.log(error);
+      });
 
-    this.setState({ userName: '' });
+    this.setState({ stockName: '' });
   };
 
 
@@ -52,9 +66,9 @@ class Form extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
-          value={this.state.userName}
-          onChange={event => this.setState({ userName: event.target.value })}
-          placeholder="GitHub username"
+          value={this.state.stockName}
+          onChange={event => this.setState({ stockName: event.target.value })}
+          placeholder="GitHub stockName"
           required
         />
         <button>Add card</button>
