@@ -109,3 +109,17 @@ https://www.edyoda.com/course/1501?episode_id=2559
 
 
 
+Material Design
+---------------
+npx create-react-app react-material-ui
+
+### Install material-ui core
+npm install @material-ui/core
+
+### To manage the contents that wil be used. Its like one repository for all content managerment
+https://www.contentful.com/
+
+npm install contentful
+
+npm start
+
