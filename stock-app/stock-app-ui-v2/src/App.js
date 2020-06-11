@@ -6,7 +6,7 @@ import './App.css';
 
 const CardList = (props) => (
   <div>
-    {props.profiles.map(profile => <Card key={profile.id} {...profile} />)}
+    {props.searchResults.map(profile => <Card key={profile.id} {...profile} />)}
   </div>
 );
 
@@ -78,19 +78,20 @@ class Form extends React.Component {
 
 class App extends React.Component {
   state = {
-    profiles: [],
+    searchResults: [],
   };
-  addNewProfile = (profileData) => {
+  addSearchResult = (searchData) => {
     this.setState(prevState => ({
-      profiles: [...prevState.profiles, profileData],
+      searchResults: [searchData],
     }));
   };
+
   render() {
     return (
       <div>
         <div className="header">{this.props.title}</div>
-        <Form onSubmit={this.addNewProfile} />
-        <CardList profiles={this.state.profiles} />
+        <Form onSubmit={this.addSearchResult} />
+        <CardList searchResults={this.state.searchResults} />
       </div>
     );
   }
