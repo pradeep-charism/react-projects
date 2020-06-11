@@ -33,7 +33,7 @@ public class StockRepository {
                 (rs, rowNum) ->
                         new Stock(
                                 rs.getLong("id"),
-                                rs.getString("holder"),
+                                rs.getString("country"),
                                 rs.getString("stock_name")
                         )
         );
@@ -43,7 +43,7 @@ public class StockRepository {
 
     public Stock save(Stock stock) {
         int isUpdated = jdbcTemplate.update(
-                "insert into portfolio (id, holder, stock_name) values(?, ?, ?)", ++idCounter, INVESTOR, stock.getStockName());
+                "insert into portfolio (id, country, stock_name) values(?, ?, ?)", ++idCounter, INVESTOR, stock.getStockName());
 
         return stock;
     }
@@ -61,7 +61,7 @@ public class StockRepository {
                 (rs, rowNum) ->
                         new Stock(
                                 rs.getLong("id"),
-                                rs.getString("holder"),
+                                rs.getString("country"),
                                 rs.getString("stock_name")
                         )
         );
@@ -86,18 +86,11 @@ public class StockRepository {
                 (rs, rowNum) ->
                         new Stock(
                                 rs.getLong("id"),
-                                rs.getString("holder"),
+                                rs.getString("country"),
                                 rs.getString("stock_name")
                         )
         );
         LOG.info("Retrieved stock: {}", stock);
         return stock;
-    }
-
-    private static void getDefaultStocks() {
-        stocks.add(new Stock(1, INVESTOR, "Singtel."));
-        stocks.add(new Stock(2, INVESTOR, "City Developments."));
-        stocks.add(new Stock(3, INVESTOR, "SBS Transit."));
-        stocks.add(new Stock(4, INVESTOR, "SATS Ltd."));
     }
 }

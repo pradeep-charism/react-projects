@@ -16,19 +16,18 @@ class Card extends React.Component {
     return (
       <div>
         <div>
-
           <table className="table">
             <thead>
               <tr>
                 <th>Id</th>
-                <th>Holder</th>
+                <th>Country</th>
                 <th>Stock Name</th>
               </tr>
             </thead>
             <tbody>
               <tr key={profile.id}>
                 <td>{profile.id}</td>
-                <td>{profile.holder}</td>
+                <td>{profile.country}</td>
                 <td>{profile.stockName}</td>
               </tr>
             </tbody>
@@ -46,7 +45,7 @@ class Form extends React.Component {
   };
   handleSubmit = async (event) => {
     event.preventDefault();
-    const resp = await axios.post('http://localhost:8080/depository/github/data', {
+    const resp = await axios.post('http://localhost:8080/depository/github/data01', {
       country: `USA`,
       stockName: `${this.state.stockName}`
     })

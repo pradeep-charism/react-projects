@@ -55,9 +55,23 @@ public class StockListing {
         try {
             Stock inputStock = objectMapper.readValue(inputString, Stock.class);
             List<Stock> stocks = stockRepository.findByCountryAndStockName(inputStock);
-            String jsonObject = objectMapper.writeValueAsString(stocks);
-            LOG.info("Returning Json Object: {}", jsonObject);
+            LOG.info("Returning Stock objects: {}", stocks);
             return stocks;
+        } catch (Exception e) {
+            throw new RuntimeException("Exception occurred while fetching data from server");
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/depository/github/data01", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getDataAsString(@RequestBody String inputString) {
+        LOG.info("Request Body: {}", inputString);
+        try {
+            Stock inputStock = objectMapper.readValue(inputString, Stock.class);
+            Stock stock = stockRepository.findByStockName(inputStock.getStockName());
+            String jsonObject = objectMapper.writeValueAsString(stock);
+            LOG.info("Returning Json Object: {}", jsonObject);
+            return jsonObject;
         } catch (Exception e) {
             throw new RuntimeException("Exception occurred while fetching data from server");
         }
