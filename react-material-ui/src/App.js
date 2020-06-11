@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar';
+import MTable from './components/MTable';
+import CoursesList from './components/CourseList';
+import AppBarComponent from './components/AppBarComponent';
+import MTab from './components/MTab';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <NavBar />
+        {/* <AppBarComponent /> */}
+        <MTab />
+
+        {/* <CoursesList /> */}
+        <MTable />
+      </div>
+    )
+  }
 }
 
 export default App;
