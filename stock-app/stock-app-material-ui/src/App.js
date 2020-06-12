@@ -4,19 +4,38 @@ import TableComponent from './components/TableComponent';
 import './App.css';
 import NavBar from './components/NavBar';
 import SelectComponent from './components/SelectComponent';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 class Form extends React.Component {
   state = {
     country: '',
-    stockName: ''
+    stockName: '',
+    quantity: ''
   };
+
+  // const classes = useStyles();
 
   handleSubmit = async (event) => {
     event.preventDefault();
     await axios.post('http://localhost:8080/depository/github/data', {
       country: `USA`,
-      stockName: `Amazon`
+      stockName: `Amazon`,
+      quantity: `${this.state.quantity}`
       // country: `${this.state.country}`,
       // stockName: `${this.state.stockName}`
     })
@@ -27,7 +46,7 @@ class Form extends React.Component {
         console.log(error);
       });
 
-  //FIXME:  Reset form fields here
+    //FIXME:  Reset form fields here
     this.setState({
       // country: '',
       // stockName: ''
@@ -45,25 +64,41 @@ class Form extends React.Component {
         <table>
           <tbody>
             <tr>
-            <td><input
-              type="text"
-              value={this.state.country}
-              onChange={event => this.setState({ country: event.target.value })}
-              placeholder="Stock Country"
+              <td><input
+                type="text"
+                value={this.state.country}
+                onChange={event => this.setState({ country: event.target.value })}
+                placeholder="Stock Country"
               // required
-            /></td>
-            <td><input
-              type="text"
-              value={this.state.stockName}
-              onChange={event => this.setState({ stockName: event.target.value })}
-              placeholder="Stock Name"
+              /></td>
+              <td><input
+                type="text"
+                value={this.state.stockName}
+                onChange={event => this.setState({ stockName: event.target.value })}
+                placeholder="Stock Name"
               // required
-            /></td>
-            <td><SelectComponent /></td>
-            <td><button className="btn btn-success">Search</button></td>
-          </tr>
+              /></td>
+              <td>
+                <FormControl variant="outlined">
+                  <InputLabel id="demo-simple-select-outlined-label">Quantity</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={this.state.quantity}
+                    onChange={event => this.setState({ quantity: event.target.value })}
+                    label="Quantity"
+                  >
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+                  <FormHelperText>Order quantity</FormHelperText>
+                </FormControl>
+              </td>
+              <td><button className="btn btn-success">Search</button></td>
+            </tr>
           </tbody>
-          
+
         </table>
       </form >
     );
