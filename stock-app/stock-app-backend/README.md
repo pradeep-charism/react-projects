@@ -1,17 +1,29 @@
 ##Mysql database commands
+
 CREATE DATABASE react_boot;
 USE react_boot;
 drop table portfolio;
 CREATE TABLE `portfolio` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `holder` VARCHAR(255) DEFAULT NULL,
+    `id` VARCHAR(20) NOT NULL,
+    `country` VARCHAR(255) DEFAULT NULL,
     `stock_name` VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (`id`)
 );
 truncate table portfolio;
-insert into `portfolio` (`id`, `holder`, `stock_name`) values('1','sg-investor','Singtel');
-insert into `portfolio` (`id`, `holder`, `stock_name`) values('2','sg-investor','City Developments Ltd.');
-select * from portfolio;
-commit;
+insert into `portfolio` (`id`, `country`, `stock_name`) values('1','SG','Singtel');
+insert into `portfolio` (`id`, `country`, `stock_name`) values('2','SG','CDL');
+insert into `portfolio` (`id`, `country`, `stock_name`) values('3','USA','Amazon');
+insert into `portfolio` (`id`, `country`, `stock_name`) values('4','USA','Tesla');
+insert into `portfolio` (`id`, `country`, `stock_name`) values('5','USA','Google');
+insert into `portfolio` (`id`, `country`, `stock_name`) values('6','USA','Microsoft');
+insert into `portfolio` (`id`, `country`, `stock_name`) values('7','USA','IBM');
+insert into `portfolio` (`id`, `country`, `stock_name`) values('8','SG','SGX');
+insert into `portfolio` (`id`, `country`, `stock_name`) values('9','USA','Amazon');
+insert into `portfolio` (`id`, `country`, `stock_name`) values('10','USA','Amazon');
 
------
+
+select * from portfolio where stock_name='Amazon';
+
+delete from portfolio where `id` = 1;
+
+---------
