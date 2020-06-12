@@ -3,7 +3,7 @@ import axios from 'axios';
 import TableComponent from './components/TableComponent';
 import './App.css';
 import NavBar from './components/NavBar';
-import MTable from './components/MTable';
+import SelectComponent from './components/SelectComponent';
 
 
 class Form extends React.Component {
@@ -59,6 +59,7 @@ class Form extends React.Component {
               placeholder="Stock Name"
               // required
             /></td>
+            <td><SelectComponent /></td>
             <td><button className="btn btn-success">Search</button></td>
           </tr>
           </tbody>

@@ -5,7 +5,7 @@ import MTable from './components/MTable';
 import CoursesList from './components/CourseList';
 import AppBarComponent from './components/AppBarComponent';
 import MTab from './components/MTab';
-
+import SelectComponent from './components/SelectComponent';
 
 class App extends React.Component {
   render() {
@@ -14,6 +14,7 @@ class App extends React.Component {
         <NavBar />
         {/* <AppBarComponent /> */}
         <MTab />
+        <SelectComponent />
 
         {/* <CoursesList /> */}
         <MTable />
