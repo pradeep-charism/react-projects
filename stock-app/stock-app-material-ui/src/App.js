@@ -10,6 +10,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -23,9 +25,11 @@ const useStyles = makeStyles((theme) => ({
 
 class Form extends React.Component {
   state = {
+    enableOverride: true,
     country: '',
     stockName: '',
-    quantity: ''
+    quantity: '',
+    overrideQuantity: ''
   };
 
   // const classes = useStyles();
@@ -57,6 +61,16 @@ class Form extends React.Component {
   resetForm = (event) => {
     event.preventDefault();
   }
+
+  handleChangeForEvent = (event) => {
+    console.log("check box: " + event.target.checked);
+    this.setState({
+      enableOverride: !event.target.checked
+    });
+    if(!event.target.checked){
+      this.setState({overrideQuantity: ''})
+    }
+  };
 
   render() {
     return (
@@ -94,6 +108,12 @@ class Form extends React.Component {
                   </Select>
                   <FormHelperText>Order quantity</FormHelperText>
                 </FormControl>
+                <Checkbox
+                  onChange={this.handleChangeForEvent}
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+                />
+                <TextField disabled={this.state.enableOverride} value={this.state.overrideQuantity} id="outlined-basic" label="Override Quantity" variant="outlined"
+                  onChange={event => this.setState({ overrideQuantity: event.target.value })} />
               </td>
               <td><button className="btn btn-success">Search</button></td>
             </tr>
