@@ -107,6 +107,9 @@ firebase deploy
 Edyoda.com/
 https://www.edyoda.com/course/1501?episode_id=2559
 
+### Hosting
+https://m.do.co/c/cbe8a09def32
+https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/putty/
 
 
 Material Design

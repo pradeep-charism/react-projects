@@ -15,7 +15,6 @@ public class StockListingTest {
     private final String TEST_STRINGS = "testing description strings";
 
 
-    @Test
     public void inputTest() throws IOException {
         String input = "{\"country\":\"USA\",\"stockName\":\"Amazon\"}";
         Stock stock = objectMapper.readValue(input, Stock.class);
