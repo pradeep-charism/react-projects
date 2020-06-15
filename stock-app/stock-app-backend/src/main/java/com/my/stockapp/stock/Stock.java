@@ -11,6 +11,7 @@ public class Stock {
 	private String country;
 	private String stockName;
 	private String description;
+	private String quantity;
 
 	public Stock() {
 	}
@@ -27,7 +28,15 @@ public class Stock {
 		this.description = description;
 	}
 
-	public Long getId() {
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public Long getId() {
 		return id;
 	}
 
@@ -75,17 +84,18 @@ public class Stock {
 		return null;
 	}
 
-	@Override
-	public String toString() {
-		return "Stock{" +
-				"id=" + id +
-				", country='" + country + '\'' +
-				", stockName='" + stockName + '\'' +
-				", description='" + description + '\'' +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                ", stockName='" + stockName + '\'' +
+                ", description='" + description + '\'' +
+                ", quantity='" + quantity + '\'' +
+                '}';
+    }
 
-	@Override
+    @Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
