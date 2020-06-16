@@ -39,22 +39,13 @@ public class StockListing {
         return stockRepository.findById(id);
     }
 
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/depository/github/data/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAllRecords(@PathVariable String userName) {
-        System.out.println("inside get data" + userName);
-        List<Stock> all = stockRepository.findAll();
-
-        return "data";
-    }
-
     @RequestMapping("/secured")
     public String secured(){
         LOG.info("Invoking secure api");
         return "Hey hai!. You are accessing a secure connection!!! : " + new Date();
     }
 
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:4200"})
     @ResponseBody
     @RequestMapping(value = "/depository/github/data", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Stock> getData(@RequestBody String inputString) {
