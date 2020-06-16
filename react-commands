@@ -25,3 +25,10 @@ npm install --save-dev webpack-cli
 npm install --save-dev @babel/core
 
 npm install --save @babel/preset-env @babel/preset-react
+
+npm install --save babel-loader 
+
+npm run dev
+
+npm install --save redux
+
