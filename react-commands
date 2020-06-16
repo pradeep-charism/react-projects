@@ -1,0 +1,27 @@
+Create new directory and name it examples
+cd examples
+
+Lets create a new app and call it as react-express-app
+npx create-react-app react-express-app
+cd react-express-app
+npm install
+
+npm install express --save
+
+This will add express dependency in the package.json
+
+
+
+
+
+--------------
+
+npm init --yes
+
+npm install --save-dev webpack
+
+npm install --save-dev webpack-cli
+
+npm install --save-dev @babel/core
+
+npm install --save @babel/preset-env @babel/preset-react
