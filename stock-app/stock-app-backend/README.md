@@ -27,11 +27,3 @@ select * from portfolio where stock_name='Amazon';
 delete from portfolio where `id` = 1;
 
 ---------
-
-
-### Key store commands
-keytool -genkey -alias my-ssl-key -keyalg RSA -keysize 2048 -validity 700 -keypass changeit -storepass changeit -keystore my-ssl-store.jks
-
-keytool -importkeystore -srckeystore my-ssl-store.jks -destkeystore my-ssl-store.jks -deststoretype pkcs12
-
-keytool -list -keystore  my-ssl-store.jks 

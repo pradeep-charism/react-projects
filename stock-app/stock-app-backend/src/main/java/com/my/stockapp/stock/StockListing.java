@@ -15,7 +15,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:4200"})
@@ -45,7 +44,6 @@ public class StockListing {
         return "Hey hai!. You are accessing a secure connection!!! : " + new Date();
     }
 
-    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:4200"})
     @ResponseBody
     @RequestMapping(value = "/depository/github/data", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Stock> getData(@RequestBody String inputString) {
