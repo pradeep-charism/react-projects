@@ -150,6 +150,8 @@ npm install --save-dev babel-loader
 
 npm run dev
 
+npm install --save semantic-ui-react
+
 npm install --save redux
 
 npm install --save react react-dom react-redux
@@ -164,4 +166,6 @@ npm install --save-dev webpack-cli @babel/core express cors body-parser @babel/p
 
 npm install --save history redux react react-dom react-redux react-router-dom
 
-npm install --save-dev webpack-dev-server
+npm install --save-dev webpack-dev-server html-webpack-plugin
+
+npm install --save-dev @babel/plugin-syntax-dynamic-import @babel/plugin-proposal-class-properties"
