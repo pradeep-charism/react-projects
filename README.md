@@ -132,3 +132,36 @@ npm start
 
 ##### Material icons
 npm install @material-ui/icons
+
+
+#####
+### Create node js project
+npm init --yes
+
+npm install --save-dev webpack
+
+npm install --save-dev webpack-cli
+
+npm install --save-dev @babel/core
+
+npm install --save-dev @babel/preset-env @babel/preset-react
+
+npm install --save-dev babel-loader 
+
+npm run dev
+
+npm install --save redux
+
+npm install --save react react-dom react-redux
+
+npm install --save react-router-dom
+
+npm install --save history
+
+npm install --save-dev express cors body-parser
+
+npm install --save-dev webpack-cli @babel/core express cors body-parser @babel/preset-env @babel/preset-react babel-loader 
+
+npm install --save history redux react react-dom react-redux react-router-dom
+
+npm install --save-dev webpack-dev-server
