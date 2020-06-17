@@ -174,3 +174,11 @@ npm install --save-dev @babel/plugin-syntax-dynamic-import @babel/plugin-proposa
 npm install --sav-dev react-hot-loader 
 
 npm install --sav-dev @hot-loader/react-dom
+
+npm install --save react-imported-component react-delay-render
+
+npm install --save-dev mini-css-extract-plugin
+
+npm install --save-dev postcss-loader autoprefixer cssnano postcss-preset-env
+
+npm install --save-dev rimraf cross-env
