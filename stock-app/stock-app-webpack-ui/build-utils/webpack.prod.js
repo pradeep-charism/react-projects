@@ -7,7 +7,8 @@ const config = {
     app: [`${commonPaths.appEntry}/index.js`]
   },
   output: {
-    filename: 'static/[name].[hash].js'
+    // filename: 'static/[name].[hash].js'
+    filename: 'static/[name].js'
   },
   devtool: 'source-map',
   module: {

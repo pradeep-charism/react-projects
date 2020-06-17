@@ -121,7 +121,7 @@ Material Design
 npx create-react-app react-material-ui
 
 ### Install material-ui core
-npm install @material-ui/core
+npm install --save-dev @material-ui/core
 
 ### To manage the contents that wil be used. Its like one repository for all content managerment
 https://www.contentful.com/
@@ -150,6 +150,8 @@ npm install --save-dev babel-loader
 
 npm run dev
 
+npm install --save-dev axios
+
 npm install --save semantic-ui-react
 
 npm install --save redux
@@ -169,6 +171,9 @@ npm install --save history redux react react-dom react-redux react-router-dom
 npm install --save-dev webpack-dev-server html-webpack-plugin
 
 npm install --save-dev @babel/plugin-syntax-dynamic-import @babel/plugin-proposal-class-properties"
+
+### If you use aync in the forms
+npm install --save-dev babel-plugin-transform-runtime babel-runtime
 
 ### Hot reload as dev dependency
 npm install --sav-dev react-hot-loader 

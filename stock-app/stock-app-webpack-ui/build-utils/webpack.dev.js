@@ -7,12 +7,8 @@ const config = {
     app: `${commonPaths.appEntry}/index.js`
   },
   output: {
-    filename: '[name].[hash].js'
-  },
-  resolve: {
-    alias: {
-      "react-dom": "@hot-loader/react-dom",
-    },
+    // filename: '[name].[hash].js'
+    filename: '[name].js'
   },
   devtool: 'inline-source-map',
   module: {
@@ -35,14 +31,10 @@ const config = {
       }
     ]
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   devServer: {
     host: 'localhost',
     port: port,
     historyApiFallback: true,
-    hot: true,
     open: true
   }
 };
