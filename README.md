@@ -169,3 +169,8 @@ npm install --save history redux react react-dom react-redux react-router-dom
 npm install --save-dev webpack-dev-server html-webpack-plugin
 
 npm install --save-dev @babel/plugin-syntax-dynamic-import @babel/plugin-proposal-class-properties"
+
+### Hot reload as dev dependency
+npm install --sav-dev react-hot-loader 
+
+npm install --sav-dev @hot-loader/react-dom

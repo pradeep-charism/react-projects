@@ -15,7 +15,10 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     resolve: {
-        extensions: ['.js', '.jsx', '.css', '.html']
+        extensions: ['.js', '.jsx', '.css', '.html'],
+        alias: {
+            "react-dom": "@hot-loader/react-dom",
+          },
     },
     devServer: {
         historyApiFallback: true
@@ -46,6 +49,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: 'public/index.html',
             favicon: 'public/favicon.ico'
@@ -55,6 +59,7 @@ module.exports = {
         host: 'localhost',
         port: port,
         historyApiFallback: true,
-        open: true
+        open: true,
+        hot: true
     }
 }
