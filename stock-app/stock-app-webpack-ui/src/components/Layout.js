@@ -9,13 +9,13 @@ const Layout = ({ children }) => {
     <Container>
       <Link to="/">
         <Header as="h1" className={h1}>
-          webpack-for-react
+          React with webpack and express connecting to backend spring boot + mysql db
         </Header>
       </Link>
       {children}
       <Divider />
       <p className={pullRight}>
-        Made with <Icon name="heart" color="red" /> by Esau Silva
+        Made with <Icon name="heart" color="red" /> by Pradeep
       </p>
     </Container>
   );

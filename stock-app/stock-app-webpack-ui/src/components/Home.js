@@ -6,9 +6,10 @@ import Layout from './Layout';
 const Home = () => {
   return (
     <Layout>
-      <p>Hello World of React and Webpack! with hot reloading, its working</p>
+      <p>Home Page</p>
       <p>
-        <Link to="/dynamic">Navigate to Dynamic Page</Link>
+        <Link to="/dynamic">Navigate to Dynamic Page</Link> <br></br>
+        <Link to="/viewer">View stock holdings</Link>
       </p>
     </Layout>
   );
