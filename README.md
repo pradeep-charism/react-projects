@@ -148,6 +148,10 @@ npm install --save-dev @babel/preset-env @babel/preset-react
 
 npm install --save-dev babel-loader 
 
+npm install --save-dev eslint-loader
+
+npm install -save-dev eslint-plugin-import
+
 npm run dev
 
 npm install --save-dev axios
