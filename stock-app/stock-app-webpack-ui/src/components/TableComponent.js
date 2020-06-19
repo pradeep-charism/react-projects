@@ -7,34 +7,35 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
     },
     body: {
-      fontSize: 14,
+        fontSize: 14,
     },
-  }))(TableCell);
-  
-  const StyledTableRow = withStyles((theme) => ({
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
     root: {
-      '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-      },
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
     },
-  }))(TableRow);
+}))(TableRow);
 
 const TableHeaderComponent = () => {
     return (
         <TableHead>
             <TableRow>
                 <StyledTableCell>Id</StyledTableCell>
-                    <StyledTableCell>Country</StyledTableCell>
-                    <StyledTableCell>Stock Name</StyledTableCell>
-                    <StyledTableCell>Stock Description</StyledTableCell>
-                </TableRow>
+                <StyledTableCell>Country</StyledTableCell>
+                <StyledTableCell>Stock Name</StyledTableCell>
+                <StyledTableCell>Stock Description</StyledTableCell>
+            </TableRow>
         </TableHead>
 
     )
@@ -50,7 +51,12 @@ const TableBodyComponent = props => {
                         <TableCell>{data.id}</TableCell>
                         <TableCell>{data.country}</TableCell>
                         <TableCell>{data.stockName}</TableCell>
-                        <TableCell>{data.description}</TableCell>
+                        <TableCell><TextareaAutosize
+                            rowsMax={4}
+                            aria-label="maximum height"
+                            placeholder="Maximum 4 rows"
+                            defaultValue={data.description}
+                        /></TableCell>
                     </TableRow>
                 ))
             ))}

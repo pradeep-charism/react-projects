@@ -12,6 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
+import TablePagination from './TablePagination';
 
 class Form extends React.Component {
   state = {
@@ -131,6 +132,7 @@ class Viewer extends React.Component {
         <div className="header">{this.props.title}</div>
         <Form onSubmit={this.addSearchResult} />
         <div>
+          <TablePagination/>
           <TableComponent joinList={this.state.searchResults} />
         </div>
       </div>
