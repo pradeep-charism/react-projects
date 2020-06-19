@@ -66,7 +66,7 @@ const TableBodyComponent = props => {
 class TableComponent extends React.Component {
     render() {
         const { joinList } = this.props
-
+        console.log('Join list' + joinList);
         return (
             <TableContainer component={Paper}>
                 <Table stickyHeader aria-label="sticky table">
