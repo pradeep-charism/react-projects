@@ -152,7 +152,16 @@ npm install --save-dev eslint-loader
 
 npm install -save-dev eslint-plugin-import
 
+npm install -save-dev eslint-plugin-node
+
+npm install -save-dev eslint-plugin-standard
+
+npm install -save-dev eslint-plugin-promise
+
 npm run dev
+
+### css
+npm install --save bootstrap
 
 npm install --save-dev axios
 
