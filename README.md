@@ -202,3 +202,7 @@ npm install --save-dev postcss-loader autoprefixer cssnano postcss-preset-env
 npm install --save-dev rimraf cross-env
 
 npm install --save-dev webpack-merge chalk
+
+
+n[redux-immutable-state-invariant
+
