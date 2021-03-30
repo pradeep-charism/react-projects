@@ -1,20 +1,43 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import rootReducer from "../reducers/index";
-import { forbiddenWordsMiddleware } from "../../middleware";
-import createSagaMiddleware from "redux-saga";
-import apiSaga from "../../sagas/api-saga";
+import {
+    configureStore,
+    getDefaultMiddleware,
+    createSlice
+} from "@reduxjs/toolkit";
 
-const initialiseSagaMiddleware = createSagaMiddleware();
 
-const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// DO STUFF
+const middleware = [
+    ...getDefaultMiddleware(),
+    /*YOUR CUSTOM MIDDLEWARES HERE*/
+];
 
-const store = createStore(
-  rootReducer,
-  storeEnhancers(
-    applyMiddleware(forbiddenWordsMiddleware, initialiseSagaMiddleware)
-  )
-);
+// AUTH STATE
+const authState = {
+    token: "",
+    error: "",
+};
 
-initialiseSagaMiddleware.run(apiSaga);
+const authSlice = createSlice({
+    name: "auth",
+    initialState: authState,
+    reducers: {
+        loginSuccess: (state, action) => {
+            state.token = action.payload;
+        },
+        loginFailed: (state, action) => {
+            state.error = action.payload;
+        },
+    },
+});
+
+const { loginSuccess, loginFailed } = authSlice.actions;
+const authReducer = authSlice.reducer;
+
+const store = configureStore({
+    reducer: {
+        auth: authReducer,
+    },
+    middleware,
+});
 
 export default store;

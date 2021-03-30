@@ -20,3 +20,7 @@ function getData() {
         response.json()
     );
 }
+
+export function* helloSaga() {
+    console.log('Hello Sagas!')
+}

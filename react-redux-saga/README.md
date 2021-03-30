@@ -17,6 +17,10 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Install redux saga - react middleware
 ### `npm i redux-saga --save-dev`
 
+
+Install redux tool kit
+### `npm i @reduxjs/toolkit`
+
 ### Code Splitting
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
