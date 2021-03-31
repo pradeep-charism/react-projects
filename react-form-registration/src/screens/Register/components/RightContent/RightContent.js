@@ -140,6 +140,8 @@ export class RightContent extends Component {
         } else {
             console.log('Invalid Form')
         }
+        console.log("Adding profile")
+        console.log(user)
     }
 
     resetErrorMsg = () => {
