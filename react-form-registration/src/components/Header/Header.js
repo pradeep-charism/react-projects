@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './style.css';
 
 export class Header extends Component {
-  render() {
-    return (
-      <header>User - Registration</header>
-    )
-  }
+    render() {
+        return (
+            <header>Marvel Student Registration</header>
+        )
+    }
 }
 
 export default Header;

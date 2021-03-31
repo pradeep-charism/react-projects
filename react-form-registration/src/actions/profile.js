@@ -8,7 +8,7 @@ export const ActionCreators = {
 
   updateProfile: (user) => ({ type: Types.UPDATE_USER, payload: { user } }),
 
-  formSubmittionStatus: (status) => ({ type: Types.FORM_SUBMITION_STATUS, payload: { status }}),
+  formSubmittionStatus: (status) => ({ type: Types.FORM_SUBMISSION_STATUS, payload: { status }}),
 
   login: (user) => ({ type: Types.LOGIN, payload: { user } })
 }
